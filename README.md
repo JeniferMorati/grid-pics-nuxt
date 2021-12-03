@@ -1,4 +1,11 @@
-# grid-pics-nuxt
+# GridPics with Nuxt!
+
+## Login Page
+![](./docs/ScreenShots/login.png)
+
+## Home Page
+![](./docs/ScreenShots/home.png)
+
 
 ## Build Setup
 
