@@ -1,5 +1,5 @@
 <template>
-  <v-app @changeMsg="setMessage">
+  <v-app>
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-icon> mdi-camera-burst </v-icon>
       <v-toolbar-title v-text="title" />

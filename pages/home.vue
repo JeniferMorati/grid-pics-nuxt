@@ -1,25 +1,45 @@
 <template>
   <div class="home">
     <Post
+      v-on:comment-submit="onFetchComments"
       v-for="post in newPosts"
       v-bind:key="post.id"
+      :id="post.id"
       :title="post.title"
       :img="post.img"
       :description="post.description"
+      :comments="post.comments"
     />
   </div>
 </template>
 
 <script>
-import posts from '../mocks/posts'
+import dbPosts from '../mocks/posts';
+
+const newPosts = dbPosts.posts.map((post) => ({
+  id: post.id,
+  title: post.title,
+  img: post.img,
+  description: post.description,
+  comments: post.comments || [],
+}));
+
+const user = window.localStorage.getItem('email');
 
 export default {
   data() {
     return {
-      newPosts: posts,
+      newPosts,
+      user,
     }
   },
   layout: 'logged',
+  methods: {
+    onFetchComments(e) {
+      const data = newPosts.filter((items) => items.id === e.id)[0];
+      data.comments.push(e.comment);
+    },
+  },
 }
 </script>
 

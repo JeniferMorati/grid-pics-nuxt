@@ -73,7 +73,6 @@ export default {
         'password',
         this.password
       )
-      window.sessionStorage.setItem('isLogged', true);
       this.$router.push({path: '/home'});
     },
   },
