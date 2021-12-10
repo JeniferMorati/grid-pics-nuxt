@@ -36,6 +36,9 @@
               elevation="2"
               >Entrar</v-btn
             >
+            <v-btn color="red" @click="onGoogleLogin" elevation="2" class="ml-2">
+              Entrar com Google
+            </v-btn>
           </v-container>
         </v-form>
       </v-card>
@@ -65,15 +68,15 @@ export default {
   },
   methods: {
     onLogin() {
-      window.localStorage.setItem(
-        'email',
-        this.email
-      )
-      window.localStorage.setItem(
-        'password',
-        this.password
-      )
-      this.$router.push({path: '/home'});
+      window.localStorage.setItem('email', this.email)
+      window.localStorage.setItem('password', this.password)
+      this.$router.push({ path: '/home' })
+    },
+    onGoogleLogin() {
+      const provider = new this.$fireModule.auth.GoogleAuthProvider()
+      this.$fire.auth.signInWithPopup(provider).catch((error) => {
+        console.error(error)
+      })
     },
   },
 }
